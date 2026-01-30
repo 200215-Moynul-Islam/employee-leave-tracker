@@ -1,0 +1,30 @@
+using ELTBackend.Data;
+using ELTBackend.Models;
+using Microsoft.EntityFrameworkCore;
+
+namespace ELTBackend.Repositories
+{
+    public abstract class RepositoryBase<T>: IRepositoryBase<T> where T : EntityBase
+    {
+        protected readonly EmployeeLeaveTrackerDbContext _dbContext;
+        protected readonly DbSet<T> _dbSet;
+        
+        public RepositoryBase(EmployeeLeaveTrackerDbContext dbContext)
+        {
+            _dbContext = dbContext;
+            _dbSet = _dbContext.Set<T>();
+        }
+
+        public async Task CreateAsync(T entity)
+        {
+            await _dbSet.AddAsync(entity);
+            return;
+        }
+
+        public async Task SaveChangesAsync()
+        {
+            await _dbContext.SaveChangesAsync();
+            return;
+        }
+    }
+}

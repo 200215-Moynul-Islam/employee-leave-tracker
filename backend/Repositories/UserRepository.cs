@@ -5,8 +5,7 @@ namespace ELTBackend.Repositories
 {
     public class UserRepository : RepositoryBase<User>, IUserRepository
     {
-        public UserRepository(EmployeeLeaveTrackerDbContext dbContext) : base(dbContext)
-        {
-        }
+        public UserRepository(EmployeeLeaveTrackerDbContext dbContext)
+            : base(dbContext) { }
     }
 }

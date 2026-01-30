@@ -4,11 +4,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ELTBackend.Repositories
 {
-    public abstract class RepositoryBase<T>: IRepositoryBase<T> where T : EntityBase
+    public abstract class RepositoryBase<T> : IRepositoryBase<T>
+        where T : EntityBase
     {
         protected readonly EmployeeLeaveTrackerDbContext _dbContext;
         protected readonly DbSet<T> _dbSet;
-        
+
         public RepositoryBase(EmployeeLeaveTrackerDbContext dbContext)
         {
             _dbContext = dbContext;

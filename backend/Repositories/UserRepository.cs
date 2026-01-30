@@ -1,5 +1,6 @@
 using ELTBackend.Data;
 using ELTBackend.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace ELTBackend.Repositories
 {
@@ -7,5 +8,10 @@ namespace ELTBackend.Repositories
     {
         public UserRepository(EmployeeLeaveTrackerDbContext dbContext)
             : base(dbContext) { }
+
+        public async Task<bool> ExistsByEmailAsync(string email)
+        {
+            return await _dbSet.AnyAsync(u => u.Email == email);
+        }
     }
 }

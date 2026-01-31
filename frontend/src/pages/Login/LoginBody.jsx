@@ -1,14 +1,14 @@
 import "./Login.css";
 import { useState } from "react";
 import { Mail, Eye, EyeOff, LogIn, Lock } from "lucide-react";
-import { loginSchema } from "../schemas/auth";
-import TextField from "../components/TextField/TextField.jsx";
-import { VALIDATION_CONFIG } from "../config/validation.config";
+import { loginSchema } from "../../schemas/auth.js";
+import TextField from "../../components/TextField/TextField.jsx";
+import { VALIDATION_CONFIG } from "../../config/validation.config.js";
 import { toast } from "react-toastify";
-import authService from "../api/auth.service.js";
-import { VALIDATION_MESSAGES } from "../messages/validation.messages.js";
-import { FEEDBACK_MESSAGES } from "../messages/feedback.message.js";
-import ErrorMessage from "../components/ErrorMessage/ErrorMessage.jsx";
+import authService from "../../api/auth.service.js";
+import { VALIDATION_MESSAGES } from "../../messages/validation.messages.js";
+import { FEEDBACK_MESSAGES } from "../../messages/feedback.message.js";
+import ErrorMessage from "../../components/ErrorMessage/ErrorMessage.jsx";
 
 function LoginBody({
   formValues,

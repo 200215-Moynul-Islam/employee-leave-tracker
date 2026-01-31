@@ -5,6 +5,7 @@ using ELTBackend.Services;
 using ELTBackend.Utilities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using MovieHub.API.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,6 +23,15 @@ builder.Services.AddDbContext<EmployeeLeaveTrackerDbContext>(options =>
 // Regsiter swagger for API documentation
 builder.Services.AddSwaggerGen();
 builder.Services.AddEndpointsApiExplorer();
+
+// Regster CORS
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(policy =>
+    {
+        policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
+    });
+});
 
 // Register all the service classes
 builder.Services.AddScoped<IUserService, UserService>();
@@ -44,8 +54,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+app.UseMiddleware<ExceptionHandlingMiddleware>();
 app.UseHttpsRedirection();
+app.UseCors();
 #endregion
 
 app.MapControllers();

@@ -5,5 +5,6 @@ namespace ELTBackend.Repositories
     public interface IUserRepository : IRepositoryBase<User>
     {
         Task<bool> ExistsByEmailAsync(string email);
+        Task<User?> GetUserByEmailAsync(string email);
     }
 }

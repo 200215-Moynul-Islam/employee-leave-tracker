@@ -27,5 +27,12 @@ namespace ELTBackend.Controllers
                 ResponseHelper.Success(data: await _userService.CreateUserAsync(userCreateDto))
             );
         }
+
+        // GET: api/useers/employees
+        [HttpGet("employees")]
+        public async Task<ActionResult<ApiResponse>> GetAllEmployees()
+        {
+            return Ok(ResponseHelper.Success(data: await _userService.GetAllEmployeesAsync()));
+        }
     }
 }

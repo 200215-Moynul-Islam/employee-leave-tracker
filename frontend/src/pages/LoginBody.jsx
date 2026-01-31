@@ -6,6 +6,8 @@ import TextField from "../components/TextField/TextField.jsx";
 import { VALIDATION_CONFIG } from "../config/validation.config";
 import { toast } from "react-toastify";
 import authService from "../api/auth.service.js";
+import { VALIDATION_MESSAGES } from "../messages/validation.messages.js";
+import { FEEDBACK_MESSAGES } from "../messages/feedback.message.js";
 
 function LoginBody({
   formValues,
@@ -38,19 +40,19 @@ function LoginBody({
     try {
       if (await authService.login(formValues.email, formValues.password)) {
         onLoginSuccess();
-        toast.success("Login successful.");
+        toast.success(FEEDBACK_MESSAGES.AUTH.LOGIN.SUCCESS);
       } else {
-        toast.error("Login failed. Please try again.");
+        toast.error(FEEDBACK_MESSAGES.AUTH.LOGIN.FAILURE);
       }
     } catch (error) {
       console.log(error);
       switch (error.status) {
         case 401: {
-          setErrors({ form: "Invalid credentials." });
+          setErrors({ form: FEEDBACK_MESSAGES.AUTH.LOGIN.INVALID_CREDENTIALS });
           break;
         }
         default: {
-          toast.error("Something went wrong. Please try again later.");
+          toast.error(FEEDBACK_MESSAGES.SOMETHING_WENT_WRONG);
         }
       }
     }

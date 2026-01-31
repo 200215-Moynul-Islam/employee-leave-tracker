@@ -18,5 +18,10 @@ namespace ELTBackend.Repositories
         {
             return await _dbSet.FirstOrDefaultAsync(u => u.Email == email && !u.IsDeleted);
         }
+
+        public async Task<IEnumerable<User>> GetUsersByRoleAsync(string role)
+        {
+            return await _dbSet.Where(u => u.Role == role && !u.IsDeleted).ToListAsync();
+        }
     }
 }

@@ -33,6 +33,12 @@ namespace ELTBackend.Services
             return _mapper.Map<UserReadDto>(userEntity);
         }
 
+        public async Task<IEnumerable<UserReadDto>> GetAllEmployeesAsync()
+        {
+            var employeeEntities = await _userRepository.GetUsersByRoleAsync(Roles.Employee);
+            return _mapper.Map<IEnumerable<UserReadDto>>(employeeEntities);
+        }
+
         #region Private Methods
         private async Task EnsureEmailIsUniqueOrThrowAsync(string email)
         {

@@ -13,5 +13,10 @@ namespace ELTBackend.Repositories
         {
             return await _dbSet.AnyAsync(u => u.Email == email);
         }
+
+        public async Task<User?> GetUserByEmailAsync(string email)
+        {
+            return await _dbSet.FirstOrDefaultAsync(u => u.Email == email && !u.IsDeleted);
+        }
     }
 }

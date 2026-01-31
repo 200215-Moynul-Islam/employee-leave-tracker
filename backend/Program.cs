@@ -2,6 +2,7 @@ using ELTBackend.Data;
 using ELTBackend.Mappings;
 using ELTBackend.Repositories;
 using ELTBackend.Services;
+using ELTBackend.Utilities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -24,9 +25,13 @@ builder.Services.AddEndpointsApiExplorer();
 
 // Register all the service classes
 builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IAuthService, AuthService>();
 
 // Register all the repository classes
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+
+// Register all the utility classes
+builder.Services.AddScoped<IJwtHelper, JwtHelper>();
 #endregion
 
 var app = builder.Build();

@@ -34,6 +34,8 @@ function LoginBody({
         password: fieldErrors?.password?.[0] ?? "",
       });
       return;
+    } else {
+      setErrors({ email: "", password: "", form: "" });
     }
 
     // Call login API

@@ -1,0 +1,53 @@
+.input-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.input-label {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.input-wrapper {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 8px 10px;
+  background: #fff;
+}
+
+.input-wrapper:focus-within {
+  box-shadow: 0px 0px 1px 1px rgba(170, 170, 170, 0.5);
+}
+
+.input-wrapper input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 14px;
+}
+
+.input-icon {
+  display: flex;
+  align-items: center;
+  color: #6b7280;
+}
+
+.input-icon.left {
+  margin-right: 8px;
+}
+
+.input-icon.right {
+  margin-left: 8px;
+}
+
+.input-error {
+  border-color: #dc2626;
+}
+
+.input-error-text {
+  font-size: 12px;
+  color: #dc2626;
+}

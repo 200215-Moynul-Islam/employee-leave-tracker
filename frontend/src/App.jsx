@@ -7,9 +7,11 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem("token"));
+
   return (
     <div className="page-layout">
-      <Header />
+      <Header isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
       <MainContent></MainContent>
       <Footer />
 

@@ -13,6 +13,11 @@ namespace ELTBackend.Mappings
             CreateMap<User, UserReadDto>();
             CreateMap<UserUpdateDto, User>();
             #endregion
+
+            #region Leave Mappings
+            CreateMap<LeaveCreateDto, Leave>();
+            CreateMap<Leave, LeaveReadDto>();
+            #endregion
         }
     }
 }

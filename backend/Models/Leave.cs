@@ -7,7 +7,7 @@ namespace ELTBackend.Models
     public class Leave : EntityBase
     {
         [Required]
-        public DateTime CreatedAt { get; set; }
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
         [Required]
         public DateTime StartDate { get; set; }
@@ -17,7 +17,7 @@ namespace ELTBackend.Models
 
         [Required]
         [MaxLength(ValidationConstants.Leave.MaxStatusLength)]
-        public string Status { get; set; } = String.Empty;
+        public string Status { get; set; } = Constants.Status.Pending;
 
         [Required]
         public Guid UserId { get; set; }

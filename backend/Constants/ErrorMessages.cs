@@ -17,5 +17,14 @@ namespace ELTBackend.Constants
             public const string InvalidPasswordFormat =
                 "Password must contain at least one uppercase letter, one lowercase letter, one digit, and one special character.";
         }
+
+        public static class Leave
+        {
+            public const string StartDateRequired = "Start date is required.";
+            public const string EndDateRequired = "End date is required.";
+            public const string EndDateMustBeOnOrAfterStartDate =
+                "End date must be on or after start date";
+            public const string UserIdRequired = "User id is required for a leave.";
+        }
     }
 }

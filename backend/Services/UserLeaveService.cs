@@ -40,6 +40,22 @@ namespace ELTBackend.Services
             await _leaveRepository.SaveChangesAsync();
         }
 
+        public async Task<LeaveReadDto> ApprovePendingLeaveAsync(Guid leaveId, Guid userId)
+        {
+            var leave = await GetPendingLeaveByIdForAnEmployeeOrThrowAsync(leaveId, userId);
+            leave.Status = Status.Approved;
+            await _leaveRepository.SaveChangesAsync();
+            return _mapper.Map<LeaveReadDto>(leave);
+        }
+
+        public async Task<LeaveReadDto> RejectPendingLeaveAsync(Guid leaveId, Guid userId)
+        {
+            var leave = await GetPendingLeaveByIdForAnEmployeeOrThrowAsync(leaveId, userId);
+            leave.Status = Status.Rejected;
+            await _leaveRepository.SaveChangesAsync();
+            return _mapper.Map<LeaveReadDto>(leave);
+        }
+
         #region Private Methods
         private async Task EnsureUserExistsByIdOrThrowAsync(Guid userId)
         {

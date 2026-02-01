@@ -42,5 +42,33 @@ namespace ELTBackend.Controllers
             await _userLeaveService.DeletePendingLeaveAsync(id, userId);
             return Ok(ResponseHelper.Success());
         }
+
+        // PATCH: api/leaves/{id:Guid}/approve?userId={userId}
+        [HttpPatch("{id:Guid}/approve")]
+        public async Task<ActionResult<ApiResponse>> ApprovePendingLeaveAsync(
+            [FromRoute] Guid id,
+            [FromQuery, BindRequired] Guid userId
+        )
+        {
+            return Ok(
+                ResponseHelper.Success(
+                    data: await _userLeaveService.ApprovePendingLeaveAsync(id, userId)
+                )
+            );
+        }
+
+        // PATCH: api/leaves/{id:Guid}/reject?userId={userId}
+        [HttpPatch("{id:Guid}/reject")]
+        public async Task<ActionResult<ApiResponse>> RejectPendingLeaveAsync(
+            [FromRoute] Guid id,
+            [FromQuery, BindRequired] Guid userId
+        )
+        {
+            return Ok(
+                ResponseHelper.Success(
+                    data: await _userLeaveService.RejectPendingLeaveAsync(id, userId)
+                )
+            );
+        }
     }
 }

@@ -8,5 +8,6 @@ namespace ELTBackend.Services
         Task<IEnumerable<UserReadDto>> GetAllEmployeesAsync();
         Task<UserReadDto> UpdateUserByIdAsync(Guid id, UserUpdateDto userUpdateDto);
         Task DeactivateUserByIdAsync(Guid id);
+        Task<UserWithLeavesDto> GetUserByIdWithLeavesAsync(Guid userId);
     }
 }

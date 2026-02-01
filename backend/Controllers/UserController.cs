@@ -56,5 +56,12 @@ namespace ELTBackend.Controllers
             await _userService.DeactivateUserByIdAsync(id);
             return Ok(ResponseHelper.Success());
         }
+
+        // GET:api/users/{id:Guid}
+        [HttpGet("{id:Guid}")]
+        public async Task<ActionResult<ApiResponse>> GetUserByIdWithLeavesAsync([FromRoute] Guid id)
+        {
+            return Ok(ResponseHelper.Success(await _userService.GetUserByIdWithLeavesAsync(id)));
+        }
     }
 }

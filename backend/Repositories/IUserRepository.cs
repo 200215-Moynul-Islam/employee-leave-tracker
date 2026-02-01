@@ -8,5 +8,6 @@ namespace ELTBackend.Repositories
         Task<bool> ExistsByEmailAsync(string email, Guid id);
         Task<User?> GetUserByEmailAsync(string email);
         Task<IEnumerable<User>> GetUsersByRoleAsync(string role);
+        Task<User?> GetUserByIdWithLeavesAsync(Guid id);
     }
 }

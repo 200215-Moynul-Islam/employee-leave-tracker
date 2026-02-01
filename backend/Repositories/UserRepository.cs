@@ -28,5 +28,12 @@ namespace ELTBackend.Repositories
         {
             return await _dbSet.Where(u => u.Role == role && !u.IsDeleted).ToListAsync();
         }
+
+        public async Task<User?> GetUserByIdWithLeavesAsync(Guid id)
+        {
+            return await _dbSet
+                .Include(u => u.Leaves.Where(l => !l.IsDeleted))
+                .FirstOrDefaultAsync(u => u.Id == id);
+        }
     }
 }

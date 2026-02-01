@@ -48,5 +48,13 @@ namespace ELTBackend.Controllers
                 )
             );
         }
+
+        // DELETE: api/users/{id:Guid}
+        [HttpDelete("{id:Guid}")]
+        public async Task<ActionResult<ApiResponse>> DeleteUserByIdAsync([FromRoute] Guid id)
+        {
+            await _userService.DeactivateUserByIdAsync(id);
+            return Ok(ResponseHelper.Success());
+        }
     }
 }

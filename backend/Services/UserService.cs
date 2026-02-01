@@ -48,6 +48,13 @@ namespace ELTBackend.Services
             return _mapper.Map<UserReadDto>(userEntity);
         }
 
+        public async Task DeactivateUserByIdAsync(Guid id)
+        {
+            var userEntity = await GetUserByIdOrThrowAsync(id);
+            userEntity.IsDeleted = true;
+            await _userRepository.SaveChangesAsync();
+        }
+
         #region Private Methods
         private async Task EnsureEmailIsUniqueOrThrowAsync(string email)
         {

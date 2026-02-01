@@ -17,6 +17,7 @@ namespace ELTBackend.Mappings
             #region Leave Mappings
             CreateMap<LeaveCreateDto, Leave>();
             CreateMap<Leave, LeaveReadDto>();
+            CreateMap<Leave, LeaveReadDetailsDto>();
             #endregion
         }
     }

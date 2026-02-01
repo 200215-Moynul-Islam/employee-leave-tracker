@@ -56,6 +56,13 @@ namespace ELTBackend.Services
             return _mapper.Map<LeaveReadDto>(leave);
         }
 
+        public async Task<IEnumerable<LeaveReadDetailsDto>> GetAllLeavesWithEmployeeAsync()
+        {
+            return _mapper.Map<IEnumerable<LeaveReadDetailsDto>>(
+                await _leaveRepository.GetAllLeavesWithEmployeeAsync()
+            );
+        }
+
         #region Private Methods
         private async Task EnsureUserExistsByIdOrThrowAsync(Guid userId)
         {

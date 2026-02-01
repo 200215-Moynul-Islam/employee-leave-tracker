@@ -36,9 +36,11 @@ builder.Services.AddCors(options =>
 // Register all the service classes
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<IUserLeaveService, UserLeaveService>();
 
 // Register all the repository classes
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<ILeaveRepository, LeaveRepository>();
 
 // Register all the utility classes
 builder.Services.AddScoped<IJwtHelper, JwtHelper>();

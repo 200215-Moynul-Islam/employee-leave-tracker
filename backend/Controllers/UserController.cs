@@ -2,6 +2,7 @@ using ELTBackend.DTOs;
 using ELTBackend.Services;
 using ELTBackend.Utilities;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace ELTBackend.Controllers
 {
@@ -62,6 +63,17 @@ namespace ELTBackend.Controllers
         public async Task<ActionResult<ApiResponse>> GetUserByIdWithLeavesAsync([FromRoute] Guid id)
         {
             return Ok(ResponseHelper.Success(await _userService.GetUserByIdWithLeavesAsync(id)));
+        }
+
+        // PATCH: api/users/{id:Guid}/update-password
+        [HttpPatch("{id:guid}/update-password")]
+        public async Task<ActionResult<ApiResponse>> UpdatePasswordAsync(
+            [FromRoute] Guid id,
+            [FromBody] PasswordUpdateDto passwordUpdateDto
+        )
+        {
+            await _userService.UpdatePasswordByIdAsync(id, passwordUpdateDto);
+            return Ok(ResponseHelper.Success());
         }
     }
 }

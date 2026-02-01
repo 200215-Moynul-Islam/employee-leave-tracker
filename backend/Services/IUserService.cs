@@ -9,5 +9,6 @@ namespace ELTBackend.Services
         Task<UserReadDto> UpdateUserByIdAsync(Guid id, UserUpdateDto userUpdateDto);
         Task DeactivateUserByIdAsync(Guid id);
         Task<UserWithLeavesDto> GetUserByIdWithLeavesAsync(Guid userId);
+        Task UpdatePasswordByIdAsync(Guid id, PasswordUpdateDto passwordUpdateDto);
     }
 }

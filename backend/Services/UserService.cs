@@ -60,6 +60,13 @@ namespace ELTBackend.Services
             return _mapper.Map<UserWithLeavesDto>(await GetUserByIdWithLeavesOrThrowAsync(id));
         }
 
+        public async Task UpdatePasswordByIdAsync(Guid id, PasswordUpdateDto passwordUpdateDto)
+        {
+            var userEntity = await GetUserByIdOrThrowAsync(id);
+            userEntity.PasswordHash = BCrypt.Net.BCrypt.HashPassword(passwordUpdateDto.Password);
+            await _userRepository.SaveChangesAsync();
+        }
+
         #region Private Methods
         private async Task EnsureEmailIsUniqueOrThrowAsync(string email)
         {

@@ -33,6 +33,13 @@ namespace ELTBackend.Services
             return _mapper.Map<LeaveReadDto>(leaveEntity);
         }
 
+        public async Task DeletePendingLeaveAsync(Guid leaveId, Guid userId)
+        {
+            var leave = await GetPendingLeaveByIdForAnEmployeeOrThrowAsync(leaveId, userId);
+            leave.IsDeleted = true;
+            await _leaveRepository.SaveChangesAsync();
+        }
+
         #region Private Methods
         private async Task EnsureUserExistsByIdOrThrowAsync(Guid userId)
         {
@@ -42,6 +49,21 @@ namespace ELTBackend.Services
             {
                 throw new NotFoundException(BusinessErrorMessages.UserNotFound);
             }
+        }
+
+        private async Task<Leave> GetPendingLeaveByIdForAnEmployeeOrThrowAsync(
+            Guid leaveId,
+            Guid userId
+        )
+        {
+            var leave = await _leaveRepository.GetByIdAsync(leaveId);
+
+            if (leave == null || leave.UserId != userId || leave.Status != Status.Pending)
+            {
+                throw new NotFoundException(BusinessErrorMessages.PendingLeaveNotFound);
+            }
+
+            return leave;
         }
         #endregion
     }

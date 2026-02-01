@@ -11,6 +11,7 @@ namespace MovieHub.API.Middleware
         private readonly Dictionary<Type, int> _businessExceptionInfo = new Dictionary<Type, int>
         {
             { typeof(InvalidCredentialsException), StatusCodes.Status401Unauthorized },
+            { typeof(NotFoundException), StatusCodes.Status404NotFound },
             { typeof(ConflictException), StatusCodes.Status409Conflict },
         };
 

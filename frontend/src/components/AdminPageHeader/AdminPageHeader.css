@@ -1,0 +1,42 @@
+.page-header-wrapper {
+  margin: 16px 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.page-header-title {
+  color: #151820;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.page-header-subtitle {
+  color: #6b7280;
+  font-size: 16px;
+}
+
+.page-header-tabs {
+  display: flex;
+  gap: 32px;
+  margin-top: 16px;
+}
+
+.page-header-tab-btn {
+  padding: 16px 4px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #6b7280;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+}
+
+.page-header-tab-btn:hover {
+  color: #000000;
+  border-bottom: 2px solid #195de6;
+}
+
+.page-header-tab-btn.active {
+  color: #195de6;
+  border-bottom-color: #195de6;
+}

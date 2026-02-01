@@ -53,3 +53,8 @@ export const registerSchema = z.object({
   name: nameSchema,
   password: passwordSchema,
 });
+
+export const editEmployeeSchema = z.object({
+  email: emailSchema,
+  name: nameSchema,
+});

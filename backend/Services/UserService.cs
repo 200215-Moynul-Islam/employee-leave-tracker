@@ -77,7 +77,7 @@ namespace ELTBackend.Services
             var user = await _userRepository.GetByIdAsync(id);
             if (user is null)
             {
-                throw new DllNotFoundException(BusinessErrorMessages.UserNotFound);
+                throw new NotFoundException(BusinessErrorMessages.UserNotFound);
             }
             return user;
         }

@@ -10,6 +10,11 @@ export const FEEDBACK_MESSAGES = {
     REGISTRATION_SUCESS: "User registration successful.",
     REGISTRATION_FAIL: "User registration failed. Please try again.",
     EXISTS: "The email already registered.",
+    UPDATE_SUCCESS: "User updated successfully.",
+    UPDATE_FAILURE: "User update failed.",
+    DELETE_SUCCESS: "User deleted successfully.",
+    DELETE_FAILURE: "User deletion unsuccessful.",
+    NOT_FOUND: "User not found.",
   },
   SOMETHING_WENT_WRONG: "Something went wrong. Please try again later.",
 };

@@ -6,5 +6,7 @@ namespace ELTBackend.Services
     {
         Task<LeaveReadDto> CreateLeaveAsync(LeaveCreateDto leaveCreateDto);
         Task DeletePendingLeaveAsync(Guid leaveId, Guid userId);
+        Task<LeaveReadDto> ApprovePendingLeaveAsync(Guid leaveId, Guid userId);
+        Task<LeaveReadDto> RejectPendingLeaveAsync(Guid leaveId, Guid userId);
     }
 }

@@ -55,6 +55,11 @@ namespace ELTBackend.Services
             await _userRepository.SaveChangesAsync();
         }
 
+        public async Task<UserWithLeavesDto> GetUserByIdWithLeavesAsync(Guid id)
+        {
+            return _mapper.Map<UserWithLeavesDto>(await GetUserByIdWithLeavesOrThrowAsync(id));
+        }
+
         #region Private Methods
         private async Task EnsureEmailIsUniqueOrThrowAsync(string email)
         {
@@ -75,6 +80,16 @@ namespace ELTBackend.Services
         private async Task<User> GetUserByIdOrThrowAsync(Guid id)
         {
             var user = await _userRepository.GetByIdAsync(id);
+            if (user is null)
+            {
+                throw new NotFoundException(BusinessErrorMessages.UserNotFound);
+            }
+            return user;
+        }
+
+        private async Task<User> GetUserByIdWithLeavesOrThrowAsync(Guid id)
+        {
+            var user = await _userRepository.GetUserByIdWithLeavesAsync(id);
             if (user is null)
             {
                 throw new NotFoundException(BusinessErrorMessages.UserNotFound);

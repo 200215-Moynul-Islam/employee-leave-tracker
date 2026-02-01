@@ -6,5 +6,6 @@ namespace ELTBackend.Services
     {
         Task<UserReadDto> CreateUserAsync(UserCreateDto userCreateDto);
         Task<IEnumerable<UserReadDto>> GetAllEmployeesAsync();
+        Task<UserReadDto> UpdateUserByIdAsync(Guid id, UserUpdateDto userUpdateDto);
     }
 }

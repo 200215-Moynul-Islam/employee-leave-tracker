@@ -5,6 +5,8 @@ import MainContent from "./components/MainContent/MainContent.jsx";
 import Footer from "./components/Footer/Footer.jsx";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Login from "./pages/Login/Login.jsx";
+import Admin from "./pages/Admin/Admin.jsx";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem("token"));
@@ -12,7 +14,9 @@ function App() {
   return (
     <div className="page-layout">
       <Header isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
-      <MainContent></MainContent>
+      <MainContent>
+        <Admin />
+      </MainContent>
       <Footer />
 
       <ToastContainer

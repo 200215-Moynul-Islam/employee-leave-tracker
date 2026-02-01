@@ -22,7 +22,7 @@ const userService = {
   },
 
   delete: async (id) => {
-    return await httpClient(`users/delete/${id}`, {
+    return await httpClient(`users/${id}`, {
       method: "DELETE",
     });
   },

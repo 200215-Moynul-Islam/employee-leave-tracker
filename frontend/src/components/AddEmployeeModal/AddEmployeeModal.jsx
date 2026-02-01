@@ -53,7 +53,7 @@ function AddEmployeeModal({ onClose, onAddEmployeeSuccess }) {
         email: formValues.email,
         password: formValues.password,
       });
-      if (res.data) {
+      if (res.success) {
         handleAddEmployeeSuccess(res.data);
         toast.success(FEEDBACK_MESSAGES.USER.REGISTRATION_SUCESS);
       } else {

@@ -59,7 +59,7 @@ function EditEmployeeModal({ employee = [], onClose, onEditEmployeeSuccess }) {
         name: formValues.name,
         email: formValues.email,
       });
-      if (res.data) {
+      if (res.success) {
         handleEditEmployeeSuccess(res.data);
         toast.success(FEEDBACK_MESSAGES.USER.UPDATE_SUCCESS);
       } else {

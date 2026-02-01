@@ -2,15 +2,7 @@ import React from "react";
 import "./EmployeeTable.css";
 import { Edit, Trash } from "lucide-react";
 
-function EmployeeTable({ employees, onDelete, onEdit }) {
-  const handleDelete = (id) => {
-    // Implement later
-  };
-
-  const handleEdit = (employee) => {
-    // Implement later
-  };
-
+function EmployeeTable({ employees, onDeleteClick, onEditClick }) {
   return (
     <div className="employee-table-container">
       <table className="employee-table-main">
@@ -36,13 +28,13 @@ function EmployeeTable({ employees, onDelete, onEdit }) {
                 <div className="employee-table-actions">
                   <button
                     className="employee-table-btn employee-table-btn-edit"
-                    onClick={handleEdit(emp)}
+                    onClick={() => onEditClick(emp)}
                   >
                     <Edit size={16} />
                   </button>
                   <button
                     className="employee-table-btn employee-table-btn-delete"
-                    onClick={handleDelete(emp.id)}
+                    onClick={() => onDeleteClick(emp)}
                   >
                     <Trash size={16} />
                   </button>

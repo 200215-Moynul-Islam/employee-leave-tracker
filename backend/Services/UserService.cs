@@ -39,6 +39,15 @@ namespace ELTBackend.Services
             return _mapper.Map<IEnumerable<UserReadDto>>(employeeEntities);
         }
 
+        public async Task<UserReadDto> UpdateUserByIdAsync(Guid id, UserUpdateDto userUpdateDto)
+        {
+            await EnsureEmailIsUniqueOrThrowAsync(id, userUpdateDto.Email!);
+            var userEntity = await GetUserByIdOrThrowAsync(id);
+            _mapper.Map(userUpdateDto, userEntity);
+            await _userRepository.SaveChangesAsync();
+            return _mapper.Map<UserReadDto>(userEntity);
+        }
+
         #region Private Methods
         private async Task EnsureEmailIsUniqueOrThrowAsync(string email)
         {
@@ -46,6 +55,24 @@ namespace ELTBackend.Services
             {
                 throw new ConflictException(BusinessErrorMessages.UserEmailAlreadyExists);
             }
+        }
+
+        private async Task EnsureEmailIsUniqueOrThrowAsync(Guid id, string email)
+        {
+            if (await _userRepository.ExistsByEmailAsync(email, id))
+            {
+                throw new ConflictException(BusinessErrorMessages.UserEmailAlreadyExists);
+            }
+        }
+
+        private async Task<User> GetUserByIdOrThrowAsync(Guid id)
+        {
+            var user = await _userRepository.GetByIdAsync(id);
+            if (user is null)
+            {
+                throw new DllNotFoundException(BusinessErrorMessages.UserNotFound);
+            }
+            return user;
         }
         #endregion
     }

@@ -3,6 +3,7 @@ using ELTBackend.Services;
 using ELTBackend.Utilities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace ELTBackend.Controllers
 {
@@ -29,6 +30,17 @@ namespace ELTBackend.Controllers
                     data: await _userLeaveService.CreateLeaveAsync(leaveCreateDto)
                 )
             );
+        }
+
+        // DELETE: api/leaves/{id:Guid}?userId={userId}
+        [HttpDelete("{id:Guid}")]
+        public async Task<ActionResult<ApiResponse>> DeletePendingLeaveAsync(
+            [FromRoute] Guid id,
+            [FromQuery, BindRequired] Guid userId
+        )
+        {
+            await _userLeaveService.DeletePendingLeaveAsync(id, userId);
+            return Ok(ResponseHelper.Success());
         }
     }
 }

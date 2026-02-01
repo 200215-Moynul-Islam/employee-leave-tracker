@@ -34,5 +34,27 @@ namespace ELTBackend.Controllers
         {
             return Ok(ResponseHelper.Success(data: await _userService.GetAllEmployeesAsync()));
         }
+
+        // PATCH: api/users/{id:Guid}
+        [HttpPatch("{id:Guid}")]
+        public async Task<ActionResult<ApiResponse>> UpdateUserByIdAsync(
+            [FromRoute] Guid id,
+            [FromBody] UserUpdateDto userUpdateDto
+        )
+        {
+            return Ok(
+                ResponseHelper.Success(
+                    data: await _userService.UpdateUserByIdAsync(id, userUpdateDto)
+                )
+            );
+        }
+
+        // DELETE: api/users/{id:Guid}
+        [HttpDelete("{id:Guid}")]
+        public async Task<ActionResult<ApiResponse>> DeleteUserByIdAsync([FromRoute] Guid id)
+        {
+            await _userService.DeactivateUserByIdAsync(id);
+            return Ok(ResponseHelper.Success());
+        }
     }
 }

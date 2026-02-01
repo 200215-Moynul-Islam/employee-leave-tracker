@@ -27,5 +27,10 @@ namespace ELTBackend.Repositories
             await _dbContext.SaveChangesAsync();
             return;
         }
+
+        public async Task<T?> GetByIdAsync(Guid id)
+        {
+            return await _dbSet.FirstOrDefaultAsync(e => e.Id == id && !e.IsDeleted);
+        }
     }
 }

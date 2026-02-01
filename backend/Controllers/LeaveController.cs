@@ -70,5 +70,16 @@ namespace ELTBackend.Controllers
                 )
             );
         }
+
+        // GET: api/leaves
+        [HttpGet]
+        public async Task<ActionResult<ApiResponse>> GetAllLeavesWithEmployeeAsync()
+        {
+            return Ok(
+                ResponseHelper.Success(
+                    data: await _userLeaveService.GetAllLeavesWithEmployeeAsync()
+                )
+            );
+        }
     }
 }

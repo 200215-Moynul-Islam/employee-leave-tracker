@@ -32,5 +32,10 @@ namespace ELTBackend.Repositories
         {
             return await _dbSet.FirstOrDefaultAsync(e => e.Id == id && !e.IsDeleted);
         }
+
+        public async Task<bool> ExistsByIdAsync(Guid id)
+        {
+            return await _dbSet.AnyAsync(e => e.Id == id && !e.IsDeleted);
+        }
     }
 }

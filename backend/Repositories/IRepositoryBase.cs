@@ -8,5 +8,6 @@ namespace ELTBackend.Repositories
         Task CreateAsync(T entity);
         Task SaveChangesAsync();
         Task<T?> GetByIdAsync(Guid id);
+        Task<bool> ExistsByIdAsync(Guid id);
     }
 }

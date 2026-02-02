@@ -18,5 +18,8 @@ export const VALIDATION_MESSAGES = {
       INVALID:
         "Password must include at least one uppercase letter, one lowercase letter, one number, and one special character.",
     },
+    CONFIRM_PASSWORD: {
+      PASSWORDS_MISMATCH: "Passwords do not match.",
+    },
   },
 };

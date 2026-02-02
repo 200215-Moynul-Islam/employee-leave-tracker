@@ -1,0 +1,91 @@
+.profile-card {
+  width: 100%;
+  background: white;
+  border: 1px solid #dcdfe5;
+  border-radius: 8px;
+  padding: 24px;
+}
+
+.profile-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.profile-info h1 {
+  font-size: 32px;
+  font-weight: 600;
+}
+.profile-info p {
+  color: #636f88;
+}
+
+.update-password-button {
+  padding: 8px 16px;
+  border: 1px solid #9abcff;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: #195de6;
+  background-color: #f4f8ff;
+  font-weight: 600;
+}
+
+.password-section {
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid #cccccc;
+}
+
+.input-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.icon-btn {
+  background: none;
+  border: none;
+  display: flex;
+  color: #636f88;
+}
+
+.icon-btn:hover {
+  color: #195de6;
+}
+
+.button-row {
+  display: flex;
+  gap: 16px;
+}
+
+.save-password-button,
+.cancel-password-button {
+  border: none;
+  border-radius: 4px;
+  padding: 6px 12px;
+  color: white;
+  font-weight: 600;
+}
+
+.save-password-button {
+  background-color: #0055ff;
+}
+
+.cancel-password-button {
+  background-color: red;
+}
+
+@media (max-width: 650px) {
+  .input-row {
+    grid-template-columns: 1fr;
+  }
+  .profile-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+}

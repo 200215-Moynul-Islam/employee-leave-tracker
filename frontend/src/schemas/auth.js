@@ -58,3 +58,17 @@ export const editEmployeeSchema = z.object({
   email: emailSchema,
   name: nameSchema,
 });
+
+export const updatePasswordSchema = z
+  .object({
+    newPassword: passwordSchema,
+    confirmPassword: z.string(),
+  })
+  .superRefine((data, ctx) => {
+    if (data.confirmPassword !== data.newPassword) {
+      ctx.addIssue({
+        message: VALIDATION_MESSAGES.AUTH.CONFIRM_PASSWORD.PASSWORDS_MISMATCH,
+        path: ["confirmPassword"],
+      });
+    }
+  });

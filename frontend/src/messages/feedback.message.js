@@ -15,6 +15,8 @@ export const FEEDBACK_MESSAGES = {
     DELETE_SUCCESS: "User deleted successfully.",
     DELETE_FAILURE: "User deletion unsuccessful.",
     NOT_FOUND: "User not found.",
+    PASSWORD_UPDATE_SUCCESS: "Password updated successfully.",
+    PASSWOORD_UPDATE_FAILURE: "Password update failed.",
   },
   LEAVE_REQUEST: {
     APPROVE_SUCESS: "Leave request approved successfully.",

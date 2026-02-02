@@ -66,13 +66,13 @@ function PendingLeaveRequestsTable({
                   <div className="pending-leave-request-table-actions">
                     <button
                       className="pending-leave-request-table-btn pending-leave-request-table-btn-approve"
-                      onClick={() => onApproveClick(pendingLeaveRequest.id)}
+                      onClick={() => onApproveClick(pendingLeaveRequest)}
                     >
                       Approve
                     </button>
                     <button
                       className="pending-leave-request-table-btn pending-leave-request-table-btn-reject"
-                      onClick={() => onRejectClick(pendingLeaveRequest.id)}
+                      onClick={() => onRejectClick(pendingLeaveRequest)}
                     >
                       Reject
                     </button>

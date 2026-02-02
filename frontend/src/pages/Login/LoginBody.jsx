@@ -41,8 +41,12 @@ function LoginBody({
 
     // Call login API
     try {
-      if (await authService.login(formValues.email, formValues.password)) {
-        onLoginSuccess();
+      const result = await authService.login(
+        formValues.email,
+        formValues.password
+      );
+      if (result.success) {
+        onLoginSuccess(result.data.token);
         toast.success(FEEDBACK_MESSAGES.AUTH.LOGIN.SUCCESS);
       } else {
         toast.error(FEEDBACK_MESSAGES.AUTH.LOGIN.FAILURE);

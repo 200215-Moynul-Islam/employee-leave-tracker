@@ -26,6 +26,21 @@ const userService = {
       method: "DELETE",
     });
   },
+
+  updatePassword: async (id, newPassword) => {
+    return await httpClient(`users/${id}/update-password`, {
+      method: "PATCH",
+      body: {
+        password: newPassword,
+      },
+    });
+  },
+
+  getEmployeeWithLeaveRequests: async (id) => {
+    return await httpClient(`users/${id}`, {
+      method: "GET",
+    });
+  },
 };
 
 export default userService;

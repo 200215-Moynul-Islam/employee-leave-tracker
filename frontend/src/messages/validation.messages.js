@@ -18,5 +18,18 @@ export const VALIDATION_MESSAGES = {
       INVALID:
         "Password must include at least one uppercase letter, one lowercase letter, one number, and one special character.",
     },
+    CONFIRM_PASSWORD: {
+      PASSWORDS_MISMATCH: "Passwords do not match.",
+    },
+  },
+
+  LEAVE: {
+    START_DATE: {
+      REQUIRED: "Start date is required.",
+    },
+    END_DATE: {
+      REQUIRED: "End date is required.",
+      INVALID: "End date can not be earlier than start date.",
+    },
   },
 };

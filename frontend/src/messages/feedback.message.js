@@ -15,6 +15,8 @@ export const FEEDBACK_MESSAGES = {
     DELETE_SUCCESS: "User deleted successfully.",
     DELETE_FAILURE: "User deletion unsuccessful.",
     NOT_FOUND: "User not found.",
+    PASSWORD_UPDATE_SUCCESS: "Password updated successfully.",
+    PASSWOORD_UPDATE_FAILURE: "Password update failed.",
   },
   LEAVE_REQUEST: {
     APPROVE_SUCESS: "Leave request approved successfully.",
@@ -22,6 +24,10 @@ export const FEEDBACK_MESSAGES = {
     REJECT_SUCESS: "Leave request rejected successfully.",
     REJECT_FAILURE: "Leave request rejection failed.",
     NOT_FOUND: "Leave request not found.",
+    CREATE_SUCCESS: "Leave requst created successfully.",
+    CREATE_FAILURE: "Leave request creation failed.",
+    DELETE_SUCCESS: "Leave request delted successfully.",
+    DELETE_FAILURE: "Leave request deletion failed.",
   },
   SOMETHING_WENT_WRONG: "Something went wrong. Please try again later.",
 };

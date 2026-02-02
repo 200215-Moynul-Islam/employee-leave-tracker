@@ -3,7 +3,7 @@ import LoginHeader from "./LoginHeader.jsx";
 import LoginBody from "./LoginBody.jsx";
 import { useState } from "react";
 
-function Login({ setIsLoggedIn }) {
+function Login({ onLoginSuccess }) {
   const [formValues, setFormValues] = useState({
     email: "",
     password: "",
@@ -23,7 +23,7 @@ function Login({ setIsLoggedIn }) {
           setFormValues={setFormValues}
           errors={errors}
           setErrors={setErrors}
-          onLoginSuccess={() => setIsLoggedIn(true)}
+          onLoginSuccess={(token) => onLoginSuccess(token)}
         />
       </div>
     </div>

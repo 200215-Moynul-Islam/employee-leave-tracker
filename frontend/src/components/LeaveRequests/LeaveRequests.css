@@ -1,0 +1,21 @@
+.manage-employees-container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.add-employee-button {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  width: fit-content;
+  gap: 4px;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 6px;
+  background-color: #195de6;
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+}

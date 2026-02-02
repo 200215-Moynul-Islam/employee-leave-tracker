@@ -22,4 +22,14 @@ export const VALIDATION_MESSAGES = {
       PASSWORDS_MISMATCH: "Passwords do not match.",
     },
   },
+
+  LEAVE: {
+    START_DATE: {
+      REQUIRED: "Start date is required.",
+    },
+    END_DATE: {
+      REQUIRED: "End date is required.",
+      INVALID: "End date can not be earlier than start date.",
+    },
+  },
 };

@@ -1,3 +1,4 @@
+import CreateLeaveRequest from "../components/CreateLeaveRequest/CreateLeaveRequest";
 import httpClient from "./httpClient";
 
 const leaveService = {
@@ -16,6 +17,13 @@ const leaveService = {
   rejectLeaveRequest: async (id, userId) => {
     return await httpClient(`leaves/${id}/reject?userId=${userId}`, {
       method: "PATCH",
+    });
+  },
+
+  CreateLeaveRequest: async (leaveRequest) => {
+    return await httpClient("leaves", {
+      method: "POST",
+      body: leaveRequest,
     });
   },
 };

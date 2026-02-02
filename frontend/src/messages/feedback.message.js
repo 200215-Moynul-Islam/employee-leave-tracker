@@ -24,6 +24,8 @@ export const FEEDBACK_MESSAGES = {
     REJECT_SUCESS: "Leave request rejected successfully.",
     REJECT_FAILURE: "Leave request rejection failed.",
     NOT_FOUND: "Leave request not found.",
+    CREATE_SUCCESS: "Leave requst created successfully.",
+    CREATE_FAILURE: "Leave request creation failed.",
   },
   SOMETHING_WENT_WRONG: "Something went wrong. Please try again later.",
 };

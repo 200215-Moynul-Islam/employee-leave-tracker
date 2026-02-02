@@ -28,17 +28,12 @@ const userService = {
   },
 
   updatePassword: async (id, newPassword) => {
-    const result = await httpClient(`users/${id}/update-password`, {
+    return await httpClient(`users/${id}/update-password`, {
       method: "PATCH",
       body: {
         password: newPassword,
       },
     });
-    if (result.success) {
-      localStorage.setItem("token", result.data);
-      return true;
-    }
-    return false;
   },
 
   getEmployeeWithLeaveRequests: async (id) => {

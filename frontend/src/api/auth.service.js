@@ -6,11 +6,10 @@ const authService = {
       method: "POST",
       body: { email, password },
     });
-    if (data.data) {
+    if (data.success) {
       localStorage.setItem("token", data.data);
-      return true;
     }
-    return false;
+    return data;
   },
 
   logout: () => {

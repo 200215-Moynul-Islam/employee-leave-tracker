@@ -42,7 +42,11 @@ function ProfileCard({ user }) {
 
     // Call password API
     try {
-      if (await userService.updatePassword(user.id, formValues.newPassword)) {
+      const result = await userService.updatePassword(
+        user.id,
+        formValues.newPassword
+      );
+      if (result.success) {
         setIsUpdating(false);
         toast.success(FEEDBACK_MESSAGES.USER.PASSWORD_UPDATE_SUCCESS);
       } else {

@@ -40,6 +40,12 @@ const userService = {
     }
     return false;
   },
+
+  getEmployeeWithLeaveRequests: async (id) => {
+    return await httpClient(`users/${id}`, {
+      method: "GET",
+    });
+  },
 };
 
 export default userService;

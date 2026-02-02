@@ -63,11 +63,21 @@ function Employee({ userId }) {
     }
   };
 
+  const handleCreateLeaveRequestSuccess = (leaveRequest) => {
+    setEmployee((prev) => ({
+      ...prev,
+      leaves: [leaveRequest, ...prev.leaves],
+    }));
+  };
+
   return (
     <>
       <Container className="employee-page-container">
         <ProfileCard user={employee} />
-        <CreateLeaveRequest userId={employee?.id} />
+        <CreateLeaveRequest
+          userId={employee?.id}
+          onCreateSuccess={handleCreateLeaveRequestSuccess}
+        />
         <LeaveRequestHistoryTableForEmployee
           employee={employee}
           onDeleteClick={(leaveRequest) =>

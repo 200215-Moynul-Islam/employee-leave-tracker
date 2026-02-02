@@ -39,12 +39,12 @@ function CreateLeaveRequest({ userId, onCreateSuccess }) {
 
     // Call password API
     try {
-      await leaveService.CreateLeaveRequest({
+      const result = await leaveService.CreateLeaveRequest({
         startDate: formValues.startDate,
         endDate: formValues.endDate,
         userId: userId,
       });
-      onCreateSuccess();
+      onCreateSuccess(result.data);
       toast.success(FEEDBACK_MESSAGES.LEAVE_REQUEST.CREATE_SUCCESS);
     } catch (error) {
       switch (error.status) {

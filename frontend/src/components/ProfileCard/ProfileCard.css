@@ -13,10 +13,12 @@
 }
 
 .profile-info h1 {
-  font-size: 32px;
+  font-size: 24px;
   font-weight: 600;
 }
 .profile-info p {
+  font-size: 12px;
+  padding-left: 4px;
   color: #636f88;
 }
 

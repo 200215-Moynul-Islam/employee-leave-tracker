@@ -61,8 +61,8 @@ function ProfileCard({ user }) {
     <div className="profile-card">
       <div className="profile-header">
         <div className="profile-info">
-          <h1>{user.name}</h1>
-          <p>{user.email}</p>
+          <h1>{user?.name}</h1>
+          <p>{user?.email}</p>
         </div>
         {isUpdating == false && (
           <button

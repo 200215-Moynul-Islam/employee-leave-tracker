@@ -5,6 +5,11 @@
   overflow-x: auto;
 }
 
+.pending-leave-request-table-header {
+  font-size: 20px;
+  margin-bottom: 12px;
+}
+
 .pending-leave-request-table-main {
   width: 100%;
   border-collapse: collapse;

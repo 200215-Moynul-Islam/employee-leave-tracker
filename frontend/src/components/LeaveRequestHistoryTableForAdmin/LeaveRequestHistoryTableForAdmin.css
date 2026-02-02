@@ -5,6 +5,11 @@
   overflow-x: auto;
 }
 
+.leave-request-history-table-for-admin-table-header {
+  font-size: 20px;
+  margin-bottom: 12px;
+}
+
 .leave-request-history-table-for-admin-main {
   width: 100%;
   border-collapse: collapse;

@@ -2,7 +2,12 @@ import "./ConfirmationModal.css";
 import Modal from "../Modal/Modal";
 import { TriangleAlert } from "lucide-react";
 
-function ConfirmationModal({ onConfirm, onCancel, message }) {
+function ConfirmationModal({
+  onConfirm,
+  onCancel,
+  messageHeader = "Confirm Action",
+  message,
+}) {
   const handleConfirm = () => {
     onConfirm();
     onCancel();
@@ -13,7 +18,7 @@ function ConfirmationModal({ onConfirm, onCancel, message }) {
         <div className="confirmation-modal-body">
           <TriangleAlert size={32} color="red" />
           <div className="confirmation-modal-message">
-            <h4>Confirm Deletion</h4>
+            <h4>{messageHeader}</h4>
             <p>{message}</p>
           </div>
         </div>

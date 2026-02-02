@@ -3,6 +3,7 @@ import { useState } from "react";
 import Container from "../../components/Container/Container";
 import AdminPageHeader from "../../components/AdminPageHeader/AdminPageHeader.jsx";
 import ManageEmployees from "../../components/ManageEmployees/ManageEmployees.jsx";
+import LeaveRequests from "../../components/LeaveRequests/LeaveRequests.jsx";
 
 function Admin() {
   const tabs = [
@@ -22,6 +23,7 @@ function Admin() {
           }}
         />
         {activeTab === "employees" && <ManageEmployees />}
+        {activeTab === "requests" && <LeaveRequests />}
       </Container>
     </div>
   );

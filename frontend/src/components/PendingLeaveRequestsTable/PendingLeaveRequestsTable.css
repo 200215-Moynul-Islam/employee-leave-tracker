@@ -1,0 +1,92 @@
+.pending-leave-request-table-container {
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1);
+  overflow-x: auto;
+}
+
+.pending-leave-request-table-header {
+  font-size: 20px;
+  margin-bottom: 12px;
+}
+
+.pending-leave-request-table-main {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.pending-leave-request-table-header {
+  background-color: #f9fafb;
+}
+
+.pending-leave-request-table-th {
+  padding: 12px 16px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #6b7280;
+  text-transform: uppercase;
+  border-bottom: 1px solid #e5e7eb;
+  white-space: nowrap;
+}
+
+.pending-leave-request-table-td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.pending-leave-request-table-row:hover {
+  background-color: #f9fafb;
+}
+
+.pending-leave-request-table-employee {
+  display: flex;
+  flex-direction: column;
+}
+
+.pending-leave-request-table-name {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  color: #111318;
+}
+
+.pending-leave-request-table-email {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.pending-leave-request-table-date {
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.pending-leave-request-table-text-right {
+  text-align: right;
+}
+
+.pending-leave-request-table-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+}
+
+.pending-leave-request-table-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.pending-leave-request-table-btn-approve {
+  background-color: #eff6ff;
+  color: #2563eb;
+}
+
+.pending-leave-request-table-btn-reject {
+  background-color: #fef2f2;
+  color: #dc2626;
+}

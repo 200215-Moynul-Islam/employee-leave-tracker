@@ -7,7 +7,7 @@ const authService = {
       body: { email, password },
     });
     if (data.success) {
-      localStorage.setItem("token", data.data);
+      localStorage.setItem("token", data.data.token);
     }
     return data;
   },

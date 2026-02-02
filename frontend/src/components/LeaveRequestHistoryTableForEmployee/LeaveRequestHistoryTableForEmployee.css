@@ -1,0 +1,101 @@
+.leave-request-history-table-for-employee-container {
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1);
+  overflow-x: auto;
+}
+
+.leave-request-history-table-for-employee-table-header {
+  font-size: 20px;
+  margin-bottom: 12px;
+}
+
+.leave-request-history-table-for-employee-main {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.leave-request-history-table-for-employee-header {
+  background-color: #f9fafb;
+}
+
+.leave-request-history-table-for-employee-th {
+  padding: 12px 16px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #6b7280;
+  text-transform: uppercase;
+  border-bottom: 1px solid #e5e7eb;
+  white-space: nowrap;
+}
+
+.leave-request-history-table-for-employee-td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.leave-request-history-table-for-employee-row:hover {
+  background-color: #f9fafb;
+}
+
+.leave-request-history-table-for-employee-employee {
+  display: flex;
+  flex-direction: column;
+}
+
+.leave-request-history-table-for-employee-name {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  color: #111318;
+}
+
+.leave-request-history-table-for-employee-email {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.leave-request-history-table-for-employee-date {
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.leave-request-history-table-for-employee-text-right {
+  text-align: right;
+}
+
+.leave-request-history-table-for-employee-status {
+  padding: 0 12px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.leave-request-history-table-for-employee-status-Pending {
+  background-color: #ffeed3;
+  color: #ff9900;
+}
+
+.leave-request-history-table-for-employee-status-Approved {
+  background-color: #eff6ff;
+  color: #2563eb;
+}
+
+.leave-request-history-table-for-employee-status-Rejected {
+  background-color: #ffe9e9;
+  color: #dc2626;
+}
+
+.leave-request-history-table-for-employee-action {
+  display: flex;
+  justify-content: flex-end;
+}
+.leave-request-history-table-for-employee-delete-button {
+  border: none;
+  border-radius: 4px;
+  background-color: rgb(255, 235, 235);
+  display: flex;
+  padding: 4px;
+  color: red;
+}

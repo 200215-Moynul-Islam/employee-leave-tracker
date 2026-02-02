@@ -26,6 +26,12 @@ const leaveService = {
       body: leaveRequest,
     });
   },
+
+  deleteLeaveRequest: async (id, userId) => {
+    return await httpClient(`leaves/${id}?userId=${userId}`, {
+      method: "DELETE",
+    });
+  },
 };
 
 export default leaveService;

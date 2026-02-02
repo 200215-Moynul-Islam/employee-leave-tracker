@@ -7,15 +7,47 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Login from "./pages/Login/Login.jsx";
 import Admin from "./pages/Admin/Admin.jsx";
+import Employee from "./pages/Employee/Employee.jsx";
+import { jwtDecode } from "jwt-decode";
+import ROLES from "./Constants/roles.js";
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem("token"));
+  const [token, setToken] = useState(localStorage.getItem("token"));
+  const decodedToken = token === null ? null : jwtDecode(token);
+  const user =
+    decodedToken === null
+      ? null
+      : {
+          id: decodedToken[
+            "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier"
+          ],
+          role: decodedToken[
+            "http://schemas.microsoft.com/ws/2008/06/identity/claims/role"
+          ],
+        };
 
   return (
     <div className="page-layout">
-      <Header isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+      <Header
+        isLoggedIn={token !== null}
+        onLogoutSuccess={() => setToken(null)}
+      />
       <MainContent>
-        <Admin />
+        {decodedToken === null ? (
+          <Login onLoginSuccess={(token) => setToken(token)} />
+        ) : user.role === ROLES.ADMIN ? (
+          <Admin />
+        ) : (
+          <Employee userId={user.id} />
+        )}
+        {/* <Employee />
+          <Routes>
+            <Route
+              path="/"
+              element={<Login onLoginSuccess={(token) => setToken(token)} />}
+            />
+            <Route path="/employee" element={<Employee userId={userId} />} />
+          </Routes> */}
       </MainContent>
       <Footer />
 

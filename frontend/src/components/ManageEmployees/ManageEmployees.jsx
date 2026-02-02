@@ -108,6 +108,7 @@ function ManageEmployees() {
         <ConfirmationModal
           onCancel={() => setActiveModal(null)}
           onConfirm={handleDeleteEmployeeSuccess}
+          messageHeader="Confirm Delete"
           message={
             "Are you sure you want to remove this employee? This action cannot be undone and will permanently delete their records from the system."
           }

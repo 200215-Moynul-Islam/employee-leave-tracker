@@ -1,6 +1,8 @@
+using ELTBackend.Constants;
 using ELTBackend.DTOs;
 using ELTBackend.Services;
 using ELTBackend.Utilities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 
@@ -18,6 +20,7 @@ namespace ELTBackend.Controllers
         }
 
         // POST: api/users/register
+        [Authorize(Roles = Roles.Admin)]
         [HttpPost("register")]
         public async Task<ActionResult<UserReadDto>> CreateUser(
             [FromBody] UserCreateDto userCreateDto
@@ -30,6 +33,7 @@ namespace ELTBackend.Controllers
         }
 
         // GET: api/useers/employees
+        [Authorize(Roles = Roles.Admin)]
         [HttpGet("employees")]
         public async Task<ActionResult<ApiResponse>> GetAllEmployees()
         {
@@ -37,6 +41,7 @@ namespace ELTBackend.Controllers
         }
 
         // PATCH: api/users/{id:Guid}
+        [Authorize(Roles = Roles.Admin)]
         [HttpPatch("{id:Guid}")]
         public async Task<ActionResult<ApiResponse>> UpdateUserByIdAsync(
             [FromRoute] Guid id,
@@ -51,6 +56,7 @@ namespace ELTBackend.Controllers
         }
 
         // DELETE: api/users/{id:Guid}
+        [Authorize(Roles = Roles.Admin)]
         [HttpDelete("{id:Guid}")]
         public async Task<ActionResult<ApiResponse>> DeleteUserByIdAsync([FromRoute] Guid id)
         {
@@ -59,6 +65,7 @@ namespace ELTBackend.Controllers
         }
 
         // GET:api/users/{id:Guid}
+        [Authorize(Roles = Roles.Employee)]
         [HttpGet("{id:Guid}")]
         public async Task<ActionResult<ApiResponse>> GetUserByIdWithLeavesAsync([FromRoute] Guid id)
         {
@@ -66,6 +73,7 @@ namespace ELTBackend.Controllers
         }
 
         // PATCH: api/users/{id:Guid}/update-password
+        [Authorize(Roles = Roles.Employee)]
         [HttpPatch("{id:guid}/update-password")]
         public async Task<ActionResult<ApiResponse>> UpdatePasswordAsync(
             [FromRoute] Guid id,

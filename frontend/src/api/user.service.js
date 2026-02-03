@@ -4,6 +4,7 @@ const userService = {
   getAllEmployees: async () => {
     return await httpClient("users/employees", {
       method: "GET",
+      requireAuth: true,
     });
   },
 
@@ -11,6 +12,7 @@ const userService = {
     return await httpClient("users/register", {
       method: "POST",
       body: user,
+      requireAuth: true,
     });
   },
 
@@ -18,12 +20,14 @@ const userService = {
     return await httpClient(`users/${id}`, {
       method: "PATCH",
       body: user,
+      requireAuth: true,
     });
   },
 
   delete: async (id) => {
     return await httpClient(`users/${id}`, {
       method: "DELETE",
+      requireAuth: true,
     });
   },
 
@@ -33,12 +37,14 @@ const userService = {
       body: {
         password: newPassword,
       },
+      requireAuth: true,
     });
   },
 
   getEmployeeWithLeaveRequests: async (id) => {
     return await httpClient(`users/${id}`, {
       method: "GET",
+      requireAuth: true,
     });
   },
 };

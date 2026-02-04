@@ -20,8 +20,13 @@ builder.Services.AddAutoMapper(typeof(MappingProfile));
 builder.Services.AddControllers();
 
 // Register DbContext with SQL Server
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+if (string.IsNullOrWhiteSpace(connectionString))
+{
+    connectionString = builder.Configuration["DB_CONNECTION"];
+}
 builder.Services.AddDbContext<EmployeeLeaveTrackerDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
+    options.UseSqlServer(connectionString)
 );
 
 // Regsiter swagger for API documentation

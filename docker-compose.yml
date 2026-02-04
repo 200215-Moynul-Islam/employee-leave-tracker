@@ -1,18 +1,61 @@
 version: "3.9"
 
 services:
-  backend:
-    image: elt-backend
-    build: ./backend
-    container_name: elt-backend
+  elt-database:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: elt-database
+    environment:
+      SA_PASSWORD: "StrongPass123!"
+      ACCEPT_EULA: "Y"
     ports:
-      - "8080:8080"
+      - "1433:1433"
+    networks:
+      - elt-network
+
+  migrate:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+      target: build
+    container_name: elt-migrate
+    environment:
+      DB_CONNECTION: "Server=elt-database;Database=EmployeeLeaveTracker;User Id=sa;Password=StrongPass123!;TrustServerCertificate=True;"
+    depends_on:
+      - elt-database
+    networks:
+      - elt-network
+    entrypoint: ["dotnet-ef", "database", "update"]
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: elt-backend
+    environment:
+      ASPNETCORE_ENVIRONMENT: "Development"
+      DB_CONNECTION: "Server=elt-database;Database=EmployeeLeaveTracker;User Id=sa;Password=StrongPass123!;TrustServerCertificate=True;"
+    depends_on:
+      - elt-database
+      - migrate
+    ports:
+      - "8082:8080"
+    networks:
+      - elt-network
 
   frontend:
-    image: elt-frontend
-    build: ./frontend
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        VITE_API_BASE_URL: "http://localhost:8082/api"
     container_name: elt-frontend
     ports:
-      - "3000:80"
+      - "3000:80"          # Host port 3000 → container port 80
+    networks:
+      - elt-network
     depends_on:
       - backend
+
+networks:
+  elt-network:
+    driver: bridge

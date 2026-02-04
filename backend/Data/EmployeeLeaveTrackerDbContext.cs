@@ -28,7 +28,7 @@ namespace ELTBackend.Data
                         Email = "admin@gmail.com",
                         Role = "Admin",
                         PasswordHash =
-                            "$2a$11$681X.KzBbj.2OPEJj.PR0.maiqA7cHEsYDaEAu4bu2/clD36GI13a",
+                            "$2a$11$PPDEDA5XLmss8nSmo6Je8O34gVQH6Tuza/nNEIKC8cIca0bSFGQUG",
                         IsDeleted = false,
                     }
                 );

@@ -1,18 +1,24 @@
 # Build stage
 FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
-WORKDIR /app
+WORKDIR /src
+
+# Install EF Core CLI
+RUN dotnet tool install --global dotnet-ef
+# Make dotnet tools available
+ENV PATH="$PATH:/root/.dotnet/tools"
 
 # Copy csproj and restore dependencies
-COPY *.csproj ./
-RUN dotnet restore
+COPY ["backend.csproj", "./"]
+RUN dotnet restore "backend.csproj"
 
-# Copy the rest of the source code
+# Copy source
 COPY . .
-RUN dotnet publish -c Release -o out
+RUN dotnet publish "backend.csproj" -c Release -o /app/publish
 
 # Runtime stage
-FROM mcr.microsoft.com/dotnet/aspnet:9.0
+FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS final
 WORKDIR /app
-COPY --from=build /app/out .
+COPY --from=build /app/publish .
+
 EXPOSE 8080
 ENTRYPOINT ["dotnet", "backend.dll"]
